@@ -1,6 +1,6 @@
 package com.example.awsapplication.dbconfig;
 
-import com.example.awsapplication.DbSecret;
+import com.example.awsapplication.data.DbSecret;
 import com.example.awsapplication.service.SecretsService;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,6 @@ public class CoverpageDbConfig {
     @Bean
     public DataSource coverpageDataSource() {
         DbSecret secret = secretsService.getDbSecret(secretName, awsRegion);
-
         HikariDataSource ds = new HikariDataSource();
         ds.setJdbcUrl("jdbc:mysql://" + secret.getHost() + ":" + secret.getPort() + "/coverpages");
         ds.setUsername(secret.getUsername());

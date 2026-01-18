@@ -1,6 +1,6 @@
 package com.example.awsapplication.service;
 
-import com.example.awsapplication.DbSecret;
+import com.example.awsapplication.data.DbSecret;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

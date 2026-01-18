@@ -12,6 +12,6 @@ import lombok.*;
 @NoArgsConstructor
 public class Asset {
     @Id
-    private String id;
+    private int id;
     private String title;
 }

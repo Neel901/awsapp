@@ -1,5 +1,5 @@
 package com.example.awsapplication.dbconfig;
-import com.example.awsapplication.DbSecret;
+import com.example.awsapplication.data.DbSecret;
 import com.example.awsapplication.service.SecretsService;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.RequiredArgsConstructor;

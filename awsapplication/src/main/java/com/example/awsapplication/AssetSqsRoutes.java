@@ -1,12 +1,6 @@
 package com.example.awsapplication;
 
-//
-//import com.example.AssetMessage;
-//import com.example.entity.Asset;
-//import com.example.repo.coverpage.CoverpageAssetRepository;
-//import com.example.repo.ebook.EbookAssetRepository;
-//import com.example.repo.hardback.HardbackAssetRepository;
-//import com.example.repo.paperback.PaperbackAssetRepository;
+import com.example.awsapplication.data.AssetMessage;
 import com.example.awsapplication.entity.Asset;
 import com.example.awsapplication.repo.coverpage.CoverpageAssetRepository;
 import com.example.awsapplication.repo.ebook.EbookAssetRepository;
@@ -29,28 +23,28 @@ public class AssetSqsRoutes extends RouteBuilder {
     @Override
     public void configure() {
 
-        from("aws2-sqs:coverpageq")
+        from("aws2-sqs:coverpageq?delay=5000")
                 .unmarshal().json(JsonLibrary.Jackson, AssetMessage.class)
                 .process(e -> {
                     AssetMessage msg = e.getMessage().getBody(AssetMessage.class);
                     coverpageRepo.save(new Asset(msg.getAssetId(), msg.getTitle()));
                 });
 
-        from("aws2-sqs:ebookq")
+        from("aws2-sqs:ebookq?delay=5000")
                 .unmarshal().json(JsonLibrary.Jackson, AssetMessage.class)
                 .process(e -> {
                     AssetMessage msg = e.getMessage().getBody(AssetMessage.class);
                     ebookRepo.save(new Asset(msg.getAssetId(), msg.getTitle()));
                 });
 
-        from("aws2-sqs:hardbackq")
+        from("aws2-sqs:hardbackq?delay=5000")
                 .unmarshal().json(JsonLibrary.Jackson, AssetMessage.class)
                 .process(e -> {
                     AssetMessage msg = e.getMessage().getBody(AssetMessage.class);
                     hardbackRepo.save(new Asset(msg.getAssetId(), msg.getTitle()));
                 });
 
-        from("aws2-sqs:paperbackq")
+        from("aws2-sqs:paperbackq?delay=5000")
                 .unmarshal().json(JsonLibrary.Jackson, AssetMessage.class)
                 .process(e -> {
                     AssetMessage msg = e.getMessage().getBody(AssetMessage.class);
