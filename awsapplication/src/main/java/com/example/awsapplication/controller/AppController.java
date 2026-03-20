@@ -49,23 +49,47 @@ public class AppController {
     }
 
     @GetMapping("/coverpage/{id}")
-    public Optional<Asset> getCoverpageById(@PathVariable int id) {
-        return coverpageRepo.findById(id);
+    public ResponseEntity<Asset> getCoverpageById(@PathVariable int id) {
+        Optional<Asset> asset = coverpageRepo.findById(id);
+
+        if (asset.isPresent()) {
+            return ResponseEntity.ok(asset.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/ebook/{id}")
-    public Optional<Asset> getEbookById(@PathVariable int id) {
-        return ebookRepo.findById(id);
+    public ResponseEntity<Asset> getEbookById(@PathVariable int id) {
+        Optional<Asset> asset = ebookRepo.findById(id);
+
+        if (asset.isPresent()) {
+            return ResponseEntity.ok(asset.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/hardback/{id}")
-    public Optional<Asset> getHardbackById(@PathVariable int id) {
-        return hardbackRepo.findById(id);
+    public ResponseEntity<Asset> getHardbackById(@PathVariable int id) {
+        Optional<Asset> asset = hardbackRepo.findById(id);
+
+        if (asset.isPresent()) {
+            return ResponseEntity.ok(asset.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/paperback/{id}")
-    public Optional<Asset> getPaperbackById(@PathVariable int id) {
-        return paperbackRepo.findById(id);
+    public ResponseEntity<Asset> getPaperbackById(@PathVariable int id) {
+        Optional<Asset> asset = paperbackRepo.findById(id);
+
+        if (asset.isPresent()) {
+            return ResponseEntity.ok(asset.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
 
